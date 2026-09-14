@@ -1,5 +1,9 @@
 # CodeBuddy OpenAI 兼容代理
 
+> ⚠️ **安全提示：仅供学习研究使用**
+> - 请勿用于生产环境或违反 CodeBuddy 服务条款的用途，由此产生的账号封禁、法律风险由使用者自行承担。
+> - `COPILOT_TOKEN` 是你的个人登录凭证，请勿分享、传播或提交到仓库（仅放本地 `.env`，调试日志用完即删）。
+
 把 CodeBuddy 的 AI 能力转成 OpenAI `Chat Completions` 接口（`/v1/chat/completions`、`/v1/models`，支持流式 SSE）。
 
 ## 两个版本
