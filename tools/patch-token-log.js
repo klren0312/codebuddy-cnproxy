@@ -16,12 +16,13 @@
  * 还原:
  *   node "<repo>/patch-token-log.js" --restore
  */
+try { require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }); } catch {} // 有 .env 就读, 没有就只用系统环境变量
 const fs = require('fs');
 const path = require('path');
 
 const TARGET = process.env.CODEBUDDY_EXT_INDEX || 'D:/Apps/CodeBuddy CN/resources/app/extensions/genie/out/extension/index.js';
 const BACKUP = TARGET + '.bak';
-const DUMP_LOG = require('path').join(__dirname, '..', 'token-dump.log');
+const DUMP_LOG = require('path').resolve(process.env.TOKEN_DUMP_LOG || require('path').join(__dirname, '..', 'token-dump.log'));
 
 const HOOK = `
 ;/* ===== TOKEN-DUMP HOOK (本地调试用, 看完就删) ===== */
