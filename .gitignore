@@ -1,0 +1,4 @@
+.env
+token-dump.log
+node_modules/
+*.log

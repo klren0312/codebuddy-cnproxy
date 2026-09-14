@@ -1,0 +1,27 @@
+{
+  "name": "codebuddy-cnproxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server-copilot.js",
+  "scripts": {
+    "start": "node servers/server-copilot.js",
+    "start:copilot": "node servers/server-copilot.js",
+    "start:ipc": "node servers/server-ipc.js",
+    "gen:pi-models": "node tools/gen-pi-models.js",
+    "patch:token": "node tools/patch-token-log.js",
+    "patch:token-restore": "node tools/patch-token-log.js --restore",
+    "test": "node --check servers/server-copilot.js && node --check servers/server-ipc.js && node --check servers/acp-server.js && node --check lib/acp-client.js && node --check lib/models.js && node --check tools/gen-pi-models.js && node --check tools/patch-token-log.js && echo ALL_SYNTAX_OK"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "uuid": "^14.0.2",
+    "ws": "^8.21.3"
+  }
+}

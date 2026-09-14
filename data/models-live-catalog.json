@@ -1,0 +1,1252 @@
+{
+  "exportedAt": "2026-09-14T08:16:48.862Z",
+  "object": "list",
+  "data": [
+    {
+      "id": "auto",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "codebuddy",
+      "display_name": "Auto",
+      "description_zh": "平衡效果与速度。自动为每个任务匹配最优模型，积分倍率随之浮动",
+      "description_en": "Balances quality and speed. Automatically selects the best model for each task, with a variable credit multiplier.",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": true,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "high",
+        "summary": "auto"
+      },
+      "max_input_tokens": 168000,
+      "max_output_tokens": 32000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "hy4-preview",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hy4 preview",
+      "description_zh": "混元思考模型，具有增强的推理能力",
+      "description_en": "Hunyuan's thinking model with enhanced reasoning capabilities",
+      "credits": "x0.29",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 0.9,
+      "top_p": 1,
+      "reasoning": {
+        "canDisableThinking": false,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "high"
+        ]
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 64000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "hy3",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hy3",
+      "description_zh": "混元思考模型，具有增强的推理能力",
+      "description_en": "Hunyuan's thinking model with enhanced reasoning capabilities",
+      "credits": "x0.00",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 0.9,
+      "top_p": 1,
+      "reasoning": {
+        "canDisableThinking": false,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high"
+        ]
+      },
+      "related_models": {
+        "lite": "hy3",
+        "reasoning": "hy3"
+      },
+      "max_input_tokens": 192000,
+      "max_output_tokens": 64000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "hy3-x",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hy3",
+      "description_zh": "混元思考模型，具有增强的推理能力",
+      "description_en": "Hunyuan's thinking model with enhanced reasoning capabilities",
+      "credits": "x0.05",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 0.9,
+      "top_p": 1,
+      "reasoning": {
+        "canDisableThinking": false,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high"
+        ]
+      },
+      "related_models": {
+        "lite": "hy3-x",
+        "reasoning": "hy3-x"
+      },
+      "max_input_tokens": 192000,
+      "max_output_tokens": 64000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "deepseek-v4.1-flash",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "deepseek",
+      "display_name": "Deepseek-V4.1-Flash",
+      "description_zh": "DeepSeek 旗舰模型，支持 1M 上下文窗口，原生多模态",
+      "description_en": "DeepSeek flagship model, supporting 1M context window, native multimodal model",
+      "credits": "x0.03",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "max"
+        ]
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan",
+        "CommitMessage",
+        "RemoteAgentProxy",
+        "InlineChat",
+        "agent",
+        "chat",
+        "enhance prompt",
+        "inline-chat",
+        "terminal",
+        "web-fetch",
+        "generate title"
+      ]
+    },
+    {
+      "id": "deepseek-v4-pro",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "deepseek",
+      "display_name": "Deepseek-V4-Pro",
+      "description_zh": "DeepSeek 旗舰模型，支持 1M 上下文窗口",
+      "description_en": "DeepSeek flagship model, supporting 1M context window",
+      "credits": "x0.51",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "xhigh"
+        ]
+      },
+      "related_models": {
+        "lite": "deepseek-v4-pro",
+        "reasoning": "deepseek-v4-pro"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 50000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan",
+        "CommitMessage",
+        "RemoteAgentProxy",
+        "InlineChat",
+        "agent",
+        "chat",
+        "enhance prompt",
+        "inline-chat",
+        "terminal",
+        "web-fetch",
+        "generate title"
+      ]
+    },
+    {
+      "id": "glm-5.3",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.3",
+      "description_zh": "能力均衡，适合日常使用",
+      "description_en": "Great for daily use",
+      "credits": "x0.79",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "max"
+        ]
+      },
+      "related_models": {
+        "lite": "glm-5.3",
+        "reasoning": "glm-5.3"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 48000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm-5.3-flash",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.3-Flash",
+      "description_zh": "原生多模态，擅长处理复杂的长程自主任务",
+      "description_en": "Native multimodal, excelling at complex, long-horizon autonomous tasks.",
+      "credits": "x0.06",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "max"
+        ]
+      },
+      "related_models": {
+        "lite": "glm-5.3-flash",
+        "reasoning": "glm-5.3-flash"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 32000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm-5.2",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.2",
+      "description_zh": "1M 上下文，擅长长程任务",
+      "description_en": "1M context, built for long-horizon tasks.",
+      "credits": "x0.79",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "high",
+          "xhigh"
+        ]
+      },
+      "related_models": {
+        "lite": "glm-5.2",
+        "reasoning": "glm-5.2"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 48000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm-5.1",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.1",
+      "description_zh": "能力均衡，适合日常使用",
+      "description_en": "Great for daily use",
+      "credits": "x0.79",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "glm-5v-turbo",
+        "reasoning": "glm-5v-turbo"
+      },
+      "max_input_tokens": 200000,
+      "max_output_tokens": 48000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm-5v-turbo",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5v-Turbo",
+      "description_zh": "原生多模态模型",
+      "description_en": "Native Multimodal Model",
+      "credits": "x0.71",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "glm-5v-turbo",
+        "reasoning": "glm-5v-turbo"
+      },
+      "max_input_tokens": 200000,
+      "max_output_tokens": 64000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "kimi-k3-1",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "kimi",
+      "display_name": "Kimi-K3",
+      "description_zh": "擅长处理复杂的长程自主任务，前端开发能力突出，同时在知识工作与科研推理上表现出色。",
+      "description_en": "Excels at complex, long-horizon autonomous tasks, with standout front-end skills and strong knowledge work and scientific reasoning",
+      "credits": "x1.62",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "kimi-k3-1",
+        "reasoning": "kimi-k3-1"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 32000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "kimi-k2.7",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "kimi",
+      "display_name": "Kimi-K2.7-Code",
+      "description_zh": "多模态模型，适合日常任务",
+      "description_en": "A multimodal model, good for daily use.",
+      "credits": "x0.57",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "kimi-k2.7",
+        "reasoning": "kimi-k2.7"
+      },
+      "max_input_tokens": 256000,
+      "max_output_tokens": 32000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "kimi-k2.6",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "kimi",
+      "display_name": "Kimi-K2.6",
+      "description_zh": "多模态模型，适合日常任务",
+      "description_en": "A multimodal model, good for daily use.",
+      "credits": "x0.52",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "kimi-k2.6",
+        "reasoning": "kimi-k2.6"
+      },
+      "max_input_tokens": 256000,
+      "max_output_tokens": 32000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "minimax-m3",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "minimax",
+      "display_name": "MiniMax-M3",
+      "description_zh": "原生多模态，擅长代码、智能体任务",
+      "description_en": "Native multimodal model for coding and agents tasks",
+      "credits": "x0.25",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "minimax-m3",
+        "reasoning": "minimax-m3"
+      },
+      "max_input_tokens": 512000,
+      "max_output_tokens": 128000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "codewise-completions",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "codebuddy-builtin",
+      "display_name": "codewise-completions",
+      "description_zh": "专门用于智能代码补全和建议的模型",
+      "description_en": "Specialized model for intelligent code completion and suggestions",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": [
+        "CodeCompletion"
+      ]
+    },
+    {
+      "id": "codewise-rewrite",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "tencent",
+      "display_name": "codewise-rewrite",
+      "description_zh": "专门用于代码重构和重写任务的模型",
+      "description_en": "Specialized model for code refactoring and rewriting tasks",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": [
+        "CodeCompletionNes"
+      ]
+    },
+    {
+      "id": "codewise-default-model-v2",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "codebuddy-builtin",
+      "display_name": "Default",
+      "description_zh": "优秀的编码模型，适合日常使用",
+      "description_en": "Excellent coding model, great for daily use",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_input_tokens": 96000,
+      "max_output_tokens": 32000,
+      "agents": []
+    },
+    {
+      "id": "hunyuan-image-alpha",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hunyuan Image Alpha",
+      "credits": "x5.00",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "tags": [
+        "text-to-image"
+      ],
+      "agents": []
+    },
+    {
+      "id": "nes-gf",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "tencent",
+      "display_name": "nes-gf",
+      "description_zh": "用于快速响应的轻量级模型",
+      "description_en": "Lightweight model for quick responses",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": []
+    },
+    {
+      "id": "codewise-jump",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "tencent",
+      "display_name": "codewise-jump",
+      "description_zh": "针对代码导航和跳转定义任务优化的模型",
+      "description_en": "Model optimized for code navigation and jump-to-definition tasks",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": []
+    },
+    {
+      "id": "codebuddy:auto",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "codebuddy",
+      "display_name": "Auto (codebuddy)",
+      "description_zh": "平衡效果与速度。自动为每个任务匹配最优模型，积分倍率随之浮动",
+      "description_en": "Balances quality and speed. Automatically selects the best model for each task, with a variable credit multiplier.",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": true,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "high",
+        "summary": "auto"
+      },
+      "max_input_tokens": 168000,
+      "max_output_tokens": 32000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "hunyuan:hy4-preview",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hy4 preview (hunyuan)",
+      "description_zh": "混元思考模型，具有增强的推理能力",
+      "description_en": "Hunyuan's thinking model with enhanced reasoning capabilities",
+      "credits": "x0.29",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 0.9,
+      "top_p": 1,
+      "reasoning": {
+        "canDisableThinking": false,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "high"
+        ]
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 64000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "hunyuan:hy3",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hy3 (hunyuan)",
+      "description_zh": "混元思考模型，具有增强的推理能力",
+      "description_en": "Hunyuan's thinking model with enhanced reasoning capabilities",
+      "credits": "x0.00",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 0.9,
+      "top_p": 1,
+      "reasoning": {
+        "canDisableThinking": false,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high"
+        ]
+      },
+      "related_models": {
+        "lite": "hy3",
+        "reasoning": "hy3"
+      },
+      "max_input_tokens": 192000,
+      "max_output_tokens": 64000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "hunyuan:hy3-x",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hy3 (hunyuan)",
+      "description_zh": "混元思考模型，具有增强的推理能力",
+      "description_en": "Hunyuan's thinking model with enhanced reasoning capabilities",
+      "credits": "x0.05",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 0.9,
+      "top_p": 1,
+      "reasoning": {
+        "canDisableThinking": false,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high"
+        ]
+      },
+      "related_models": {
+        "lite": "hy3-x",
+        "reasoning": "hy3-x"
+      },
+      "max_input_tokens": 192000,
+      "max_output_tokens": 64000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "deepseek:deepseek-v4.1-flash",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "deepseek",
+      "display_name": "Deepseek-V4.1-Flash (deepseek)",
+      "description_zh": "DeepSeek 旗舰模型，支持 1M 上下文窗口，原生多模态",
+      "description_en": "DeepSeek flagship model, supporting 1M context window, native multimodal model",
+      "credits": "x0.03",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "max"
+        ]
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 128000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan",
+        "CommitMessage",
+        "RemoteAgentProxy",
+        "InlineChat",
+        "agent",
+        "chat",
+        "enhance prompt",
+        "inline-chat",
+        "terminal",
+        "web-fetch",
+        "generate title"
+      ]
+    },
+    {
+      "id": "deepseek:deepseek-v4-pro",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "deepseek",
+      "display_name": "Deepseek-V4-Pro (deepseek)",
+      "description_zh": "DeepSeek 旗舰模型，支持 1M 上下文窗口",
+      "description_en": "DeepSeek flagship model, supporting 1M context window",
+      "credits": "x0.51",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "xhigh"
+        ]
+      },
+      "related_models": {
+        "lite": "deepseek-v4-pro",
+        "reasoning": "deepseek-v4-pro"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 50000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan",
+        "CommitMessage",
+        "RemoteAgentProxy",
+        "InlineChat",
+        "agent",
+        "chat",
+        "enhance prompt",
+        "inline-chat",
+        "terminal",
+        "web-fetch",
+        "generate title"
+      ]
+    },
+    {
+      "id": "glm:glm-5.3",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.3 (glm)",
+      "description_zh": "能力均衡，适合日常使用",
+      "description_en": "Great for daily use",
+      "credits": "x0.79",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "max"
+        ]
+      },
+      "related_models": {
+        "lite": "glm-5.3",
+        "reasoning": "glm-5.3"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 48000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm:glm-5.3-flash",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.3-Flash (glm)",
+      "description_zh": "原生多模态，擅长处理复杂的长程自主任务",
+      "description_en": "Native multimodal, excelling at complex, long-horizon autonomous tasks.",
+      "credits": "x0.06",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "low",
+          "high",
+          "max"
+        ]
+      },
+      "related_models": {
+        "lite": "glm-5.3-flash",
+        "reasoning": "glm-5.3-flash"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 32000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm:glm-5.2",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.2 (glm)",
+      "description_zh": "1M 上下文，擅长长程任务",
+      "description_en": "1M context, built for long-horizon tasks.",
+      "credits": "x0.79",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "canDisableThinking": true,
+        "defaultEffort": "high",
+        "summary": "auto",
+        "supportedEfforts": [
+          "high",
+          "xhigh"
+        ]
+      },
+      "related_models": {
+        "lite": "glm-5.2",
+        "reasoning": "glm-5.2"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 48000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm:glm-5.1",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5.1 (glm)",
+      "description_zh": "能力均衡，适合日常使用",
+      "description_en": "Great for daily use",
+      "credits": "x0.79",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "glm-5v-turbo",
+        "reasoning": "glm-5v-turbo"
+      },
+      "max_input_tokens": 200000,
+      "max_output_tokens": 48000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "glm:glm-5v-turbo",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "glm",
+      "display_name": "GLM-5v-Turbo (glm)",
+      "description_zh": "原生多模态模型",
+      "description_en": "Native Multimodal Model",
+      "credits": "x0.71",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "glm-5v-turbo",
+        "reasoning": "glm-5v-turbo"
+      },
+      "max_input_tokens": 200000,
+      "max_output_tokens": 64000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "kimi:kimi-k3-1",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "kimi",
+      "display_name": "Kimi-K3 (kimi)",
+      "description_zh": "擅长处理复杂的长程自主任务，前端开发能力突出，同时在知识工作与科研推理上表现出色。",
+      "description_en": "Excels at complex, long-horizon autonomous tasks, with standout front-end skills and strong knowledge work and scientific reasoning",
+      "credits": "x1.62",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "kimi-k3-1",
+        "reasoning": "kimi-k3-1"
+      },
+      "max_input_tokens": 1000000,
+      "max_output_tokens": 32000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "kimi:kimi-k2.7",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "kimi",
+      "display_name": "Kimi-K2.7-Code (kimi)",
+      "description_zh": "多模态模型，适合日常任务",
+      "description_en": "A multimodal model, good for daily use.",
+      "credits": "x0.57",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "kimi-k2.7",
+        "reasoning": "kimi-k2.7"
+      },
+      "max_input_tokens": 256000,
+      "max_output_tokens": 32000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "kimi:kimi-k2.6",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "kimi",
+      "display_name": "Kimi-K2.6 (kimi)",
+      "description_zh": "多模态模型，适合日常任务",
+      "description_en": "A multimodal model, good for daily use.",
+      "credits": "x0.52",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "kimi-k2.6",
+        "reasoning": "kimi-k2.6"
+      },
+      "max_input_tokens": 256000,
+      "max_output_tokens": 32000,
+      "tags": [
+        "craft"
+      ],
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "minimax:minimax-m3",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "minimax",
+      "display_name": "MiniMax-M3 (minimax)",
+      "description_zh": "原生多模态，擅长代码、智能体任务",
+      "description_en": "Native multimodal model for coding and agents tasks",
+      "credits": "x0.25",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": true,
+      "recommended": false,
+      "temperature": 1,
+      "reasoning": {
+        "effort": "medium",
+        "summary": "auto"
+      },
+      "related_models": {
+        "lite": "minimax-m3",
+        "reasoning": "minimax-m3"
+      },
+      "max_input_tokens": 512000,
+      "max_output_tokens": 128000,
+      "agents": [
+        "craft",
+        "ask",
+        "plan"
+      ]
+    },
+    {
+      "id": "codebuddy-builtin:codewise-completions",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "codebuddy-builtin",
+      "display_name": "codewise-completions (codebuddy-builtin)",
+      "description_zh": "专门用于智能代码补全和建议的模型",
+      "description_en": "Specialized model for intelligent code completion and suggestions",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": [
+        "CodeCompletion"
+      ]
+    },
+    {
+      "id": "tencent:codewise-rewrite",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "tencent",
+      "display_name": "codewise-rewrite (tencent)",
+      "description_zh": "专门用于代码重构和重写任务的模型",
+      "description_en": "Specialized model for code refactoring and rewriting tasks",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": [
+        "CodeCompletionNes"
+      ]
+    },
+    {
+      "id": "codebuddy-builtin:codewise-default-model-v2",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "codebuddy-builtin",
+      "display_name": "Default (codebuddy-builtin)",
+      "description_zh": "优秀的编码模型，适合日常使用",
+      "description_en": "Excellent coding model, great for daily use",
+      "supports_tools": true,
+      "supports_images": true,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_input_tokens": 96000,
+      "max_output_tokens": 32000,
+      "agents": []
+    },
+    {
+      "id": "hunyuan:hunyuan-image-alpha",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "hunyuan",
+      "display_name": "Hunyuan Image Alpha (hunyuan)",
+      "credits": "x5.00",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "tags": [
+        "text-to-image"
+      ],
+      "agents": []
+    },
+    {
+      "id": "tencent:nes-gf",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "tencent",
+      "display_name": "nes-gf (tencent)",
+      "description_zh": "用于快速响应的轻量级模型",
+      "description_en": "Lightweight model for quick responses",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": []
+    },
+    {
+      "id": "tencent:codewise-jump",
+      "object": "model",
+      "created": 1789373808,
+      "owned_by": "tencent",
+      "display_name": "codewise-jump (tencent)",
+      "description_zh": "针对代码导航和跳转定义任务优化的模型",
+      "description_en": "Model optimized for code navigation and jump-to-definition tasks",
+      "supports_tools": false,
+      "supports_images": false,
+      "supports_reasoning": false,
+      "recommended": false,
+      "max_output_tokens": 256,
+      "agents": []
+    }
+  ]
+}
