@@ -13,12 +13,15 @@
  *
  * 环境变量 (.env):
  *   ACP_COMMAND / ACP_ARGS / ACP_CWD
- *   WORKSPACE_ROOT=...      agent 可读写根目录 (默认 cwd)
+ *   WORKSPACE_ROOT=...      默认会话目录 (不填则 agent 用它自己的默认目录)
+ *                             同时是本侧 fs/terminal 的强制执行根 (默认本进程 cwd)
  *   ALLOW_WRITE_OUTSIDE=0   是否允许写根目录之外
  *   PERMISSION_POLICY=allow|deny   权限请求策略 (默认 allow)
  *   MODELS_CHAT_MODE=craft  /v1/models 按哪个 agent 名单过滤 (实时表时有效)
  */
 require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
+const fs = require('fs');
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
@@ -55,18 +58,37 @@ async function ensureACP() {
   if (!acpReady) acpReady = acp.start().catch((e) => { acpReady = null; throw e; });
   return acpReady;
 }
-// sessionId(proxy) -> { id, model, messages, acpSessionId }
+// sessionId(proxy) -> { id, model, messages, acpSessionId, cwd }
 const sessions = new Map();
 function getSession(id) { return sessions.get(id); }
-function createSession(model) {
-  const s = { id: uuidv4(), model, messages: [], createdAt: Date.now(), acpSessionId: null };
+function createSession(model, cwd) {
+  const s = { id: uuidv4(), model, messages: [], createdAt: Date.now(), acpSessionId: null, cwd: cwd || null };
   sessions.set(s.id, s);
   return s;
 }
+// 新建 ACP 会话时用动态 cwd (请求带的 session_cwd), 不带则回退静态 WORKSPACE_ROOT。
+// 校验: 必须是已存在的绝对目录, 否则 400 (避免 agent 在不存在的目录上起会话)。
+function resolveSessionCwd(reqCwd) {
+  if (!reqCwd) return null;
+  if (!path.isAbsolute(reqCwd)) {
+    const e = new Error('session_cwd 必须是绝对路径');
+    e.statusCode = 400;
+    throw e;
+  }
+  let st = null;
+  try { st = fs.statSync(reqCwd); } catch {}
+  if (!st || !st.isDirectory()) {
+    const e = new Error('session_cwd 目录不存在: ' + reqCwd);
+    e.statusCode = 400;
+    throw e;
+  }
+  return path.resolve(reqCwd);
+}
 async function ensureAcpSession(s) {
   if (s.acpSessionId) return s.acpSessionId;
-  const r = await acp.newSession({});
+  const r = await acp.newSession(s.cwd ? { cwd: s.cwd } : {});
   s.acpSessionId = r.sessionId;
+  if (s.cwd) console.log(`[ipc] 会话 ${s.id} 工作区=${s.cwd}`);
   return s.acpSessionId;
 }
 
@@ -146,12 +168,17 @@ app.post('/v1/chat/completions', auth, async (req, res) => {
     return res.status(502).json({ error: { message: e.message, type: 'server_error' } });
   }
   try {
-    const { messages, stream = false, model: reqModel, session_id } = req.body;
+    const { messages, stream = false, model: reqModel, session_id, session_cwd } = req.body;
     if (!messages || !messages.length) {
       return res.status(400).json({ error: { message: 'messages 不能为空', type: 'invalid_request_error' } });
     }
+    let cwd = null;
+    try { cwd = resolveSessionCwd(session_cwd); }
+    catch (e) {
+      return res.status(e.statusCode || 400).json({ error: { message: e.message, type: 'invalid_request_error' } });
+    }
     let sid = session_id;
-    if (!sid || !getSession(sid)) sid = createSession(reqModel || 'auto').id;
+    if (!sid || !getSession(sid)) sid = createSession(reqModel || 'auto', cwd).id;
     const s = getSession(sid);
     const model = reqModel || s.model || 'auto';
     const acpSessionId = await ensureAcpSession(s);

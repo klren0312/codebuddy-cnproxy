@@ -19,7 +19,12 @@
  * 本文件自己读同目录 .env (COPILOT_TOKEN / COPILOT_ENDPOINT / COPILOT_HEADERS / COPILOT_MODEL),
  * 所以 env 可留空。Windows 路径含空格没关系, args 是数组逐个传参。
  */
-require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') });
+require('dotenv').config({ path: require('path').join(__dirname, '..', '.env'), quiet: true }); // quiet: dotenv 17 默认往 stdout 打 injected env, 会污染 ACP 流
+// ACP stdio 传输必须是 NDJSON: stdout 只允许单行 JSON, 日志走 stderr。
+// lib/models.js 里有 console.log/warn (默认写 stdout), 在此进程内全部重定向到 stderr,
+// 否则 Zed 解析到非 ACP 行就一直 loading。
+const _toErr = (...a) => process.stderr.write(a.map((x) => String(x)).join(' ') + '\n');
+console.log = _toErr; console.warn = _toErr; console.info = _toErr; console.debug = _toErr;
 const { spawn, execFile } = require('child_process');
 const fs = require('fs');
 const path = require('path');
@@ -27,7 +32,7 @@ const { getCatalog } = require('../lib/models');
 
 const catalog = getCatalog();
 const ENDPOINT = (process.env.COPILOT_ENDPOINT || 'https://copilot.tencent.com/v2').replace(/\/$/, '');
-const DEFAULT_MODEL = process.env.COPILOT_MODEL || 'auto';
+const DEFAULT_MODEL = process.env.COPILOT_MODEL || 'hy3';
 const MAX_TURNS = 25;
 
 function buildHeaders() {
@@ -43,11 +48,13 @@ function buildHeaders() {
   };
 }
 
-// ---------- JSON-RPC stdio ----------
+// ---------- JSON-RPC stdio (NDJSON) ----------
+// 规范: stdio 下消息按行分隔 (\n), stdout 禁止出现非 ACP 内容。
+// 之前这里发的是 LSP 式 Content-Length 帧, Zed 解析不到才一直 loading。
+// 接收侧保留 Content-Length 兼容 (自家的 lib/acp-client.js 发的是那种帧), 双向都能对上。
 let buf = Buffer.alloc(0);
 function send(obj) {
-  const body = Buffer.from(JSON.stringify(obj), 'utf8');
-  process.stdout.write(Buffer.concat([Buffer.from(`Content-Length: ${body.length}\r\n\r\n`), body]));
+  process.stdout.write(JSON.stringify(obj) + '\n');
 }
 function sendResult(id, result) { send({ jsonrpc: '2.0', id, result: result ?? {} }); }
 function sendError(id, code, message) { send({ jsonrpc: '2.0', id, error: { code, message } }); }
@@ -78,7 +85,11 @@ process.stdin.on('data', (c) => {
 function handleRaw(text) {
   let msg;
   try { msg = JSON.parse(text); } catch (e) { log('JSON 解析失败:', e.message); return; }
-  if (!msg.method) return;
+  if (Array.isArray(msg)) { for (const m of msg) { if (m && m.method) handleOne(m); } return; }
+  if (!msg || !msg.method) return;
+  handleOne(msg);
+}
+function handleOne(msg) {
   dispatch(msg.method, msg.params || {}, msg.id).then(
     (r) => { if (msg.id !== undefined && r !== undefined) sendResult(msg.id, r); },
     (e) => {
@@ -176,12 +187,21 @@ async function chatStream(model, messages, signal, onDelta) {
 // ---------- ACP 方法 ----------
 async function dispatch(method, params, id) {
   switch (method) {
-    case 'initialize':
+    case 'initialize': {
+      // 版本协商: 只实现 v1; 客户端要 1 就回 1, 要更高就回我们支持的最高版 (1),
+      // 客户端不支持会主动断开并提示, 比回一个假版本号然后全程异常要好。
+      const want = params.protocolVersion ?? 1;
       return {
-        protocolVersion: params.protocolVersion ?? 1,
-        agentCapabilities: { promptCapabilities: { image: false, audio: false, embeddedContext: false } },
+        protocolVersion: Math.min(want, 1),
+        agentCapabilities: {
+          promptCapabilities: { image: false, audio: false, embeddedContext: true },
+          mcpCapabilities: { http: false, sse: false },
+        },
+        agentInfo: { name: 'codebuddy-proxy', title: 'CodeBuddy', version: '1.0.0' },
       };
-    case 'authenticate': return {};
+    }
+    case 'authenticate':
+    case 'auth/login': return {};
     case 'session/new': {
       const s = sess(`sess-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`);
       s.cwd = params.cwd || process.cwd();
@@ -190,6 +210,19 @@ async function dispatch(method, params, id) {
     case 'session/load': {
       if (params.sessionId) sess(params.sessionId);
       if (params.cwd) sess(params.sessionId).cwd = params.cwd;
+      return {};
+    }
+    case 'session/resume': {
+      // 不回放历史, 直接恢复上下文继续
+      if (params.sessionId) sess(params.sessionId);
+      if (params.cwd) sess(params.sessionId).cwd = params.cwd;
+      return {};
+    }
+    case 'session/list': return { sessions: [] };
+    case 'session/close': {
+      const s = sessions.get(params.sessionId);
+      if (s && s.abort) s.abort.abort();
+      sessions.delete(params.sessionId);
       return {};
     }
     case 'session/set_model': {
